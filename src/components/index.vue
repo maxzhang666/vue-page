@@ -36,6 +36,10 @@
           <a :href="info.music.url" v-if="music" target="_blank">
             <el-button plain>下载音乐</el-button>
           </a>
+          <el-row>
+            <el-image :src="info.cover" v-if="info.cover" :preview-src-list="[info.cover]">
+            </el-image>
+          </el-row>
         </div>
         <div class="waterfall" v-if="iseen">
           <div class="item" v-for="url in images_url" :key="url">
