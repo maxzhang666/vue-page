@@ -21,6 +21,7 @@
             <el-select v-model="select" slot="prepend" placeholder="视频">
               <el-option label="视频" value="1"></el-option>
               <el-option label="图集" value="2"></el-option>
+              <el-option label="小红书" value="3"></el-option>
             </el-select>
             <el-button slot="append" @click="onSubmit">解析</el-button>
           </el-input>
@@ -71,8 +72,12 @@ export default {
   },
   mounted() {
     let u = this.$route.query.u;
+    let t = this.$route.query.t
     if (u) {
       this.input = u
+    }
+    if (t && t == 'xhsimg') {
+      this.select = '3'
     }
   },
   methods: {
@@ -103,6 +108,18 @@ export default {
             });
           }
         })
+      } else if (this.select == '3') {
+        try {
+
+        this.iseen = true
+        this.loading = false
+        this.images_url = [window.atob(this.input)]
+        }catch (e) {
+          this.$notify.error({
+            title: '解析失败',
+            message: '图集不存在或接口失效'
+          });
+        }
       } else {
         this.seen = false
         this.axios.get('https://tenapi.cn/v2/images?url=' + encodeURIComponent(url[0])).then((res) => {
