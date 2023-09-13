@@ -171,7 +171,7 @@ body:before {
 }
 
 .el-select .el-input {
-  width: 80px;
+  width: 100px;
 }
 
 .input-with-select .el-input-group__prepend {
