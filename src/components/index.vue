@@ -28,16 +28,18 @@
         </div>
         <div class="download" v-if="seen">
           <h4>{{ info.title }}</h4>
+          <el-row>
           <a :href="info.cover" target="_blank">
             <el-button plain>下载封面</el-button>
           </a>
           <a :href="info.url" target="_blank">
             <el-button plain>下载视频</el-button>
           </a>
-          <a :href="info.music.url" v-if="music" target="_blank">
+          <a :href="info.music.url" v-if="music.url" target="_blank">
             <el-button plain>下载音乐</el-button>
           </a>
-          <el-row>
+          </el-row>
+          <el-row style="margin-top: 20px">
             <el-image :src="info.cover" v-if="info.cover" :preview-src-list="[info.cover]">
             </el-image>
           </el-row>
